@@ -1,6 +1,7 @@
 package com.sriyank.vacationspots
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,7 @@ class MyAdapter(val context: Context, var destinationList: ArrayList<Destination
             itemView.apply {
                 imvDelete.setOnClickListener(this@MyViewHolder)
                 imvMakeCopy.setOnClickListener(this@MyViewHolder)
+                rootCardView.setOnClickListener(this@MyViewHolder)
             }
         }
 
@@ -39,7 +41,13 @@ class MyAdapter(val context: Context, var destinationList: ArrayList<Destination
             when (v!!.id) {
                 R.id.imvDelete -> deleteItem()
                 R.id.imvMakeCopy -> addItem()
+                R.id.rootCardView -> openExploreActivity()
             }
+        }
+
+        private fun openExploreActivity() {
+            val intent = Intent(context,ExploreActivity::class.java)
+            context.startActivity(intent)
         }
 
         fun deleteItem() {
